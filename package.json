@@ -1,0 +1,31 @@
+{
+  "name": "gulp-src-viewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psalaets/gulp-src-viewer.git"
+  },
+  "keywords": [
+    "gulp",
+    "src",
+    "gulpfriendly"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/psalaets/gulp-src-viewer/issues"
+  },
+  "homepage": "https://github.com/psalaets/gulp-src-viewer#readme",
+  "dependencies": {
+    "through2": "2.0.0"
+  },
+  "devDependencies": {
+    "gulp": "3.9.0",
+    "mocha": "2.2.5"
+  }
+}
