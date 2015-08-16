@@ -60,15 +60,13 @@ angular.module('gsv', [])
       var quote = "'";
       var indent = "  ";
 
-      $scope.singleQuote = function() {
-        quote = "'";
-        updateCode($scope.patterns);
-      };
+      $scope.singleQuote = setQuoteStyle.bind(null, "'");
+      $scope.doubleQuote = setQuoteStyle.bind(null, '"');
 
-      $scope.doubleQuote = function() {
-        quote = '"';
+      function setQuoteStyle(quoteStyle) {
+        quote = quoteStyle;
         updateCode($scope.patterns);
-      };
+      }
 
       $scope.$watch('patterns', updateCode, 'deep');
 
