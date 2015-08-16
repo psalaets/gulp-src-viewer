@@ -44,12 +44,21 @@
   </script>
 
   <script type="text/ng-template" id="pattern-inputs">
-    <div ng-repeat="pattern in patterns">
-      <input
-        id="pattern-{{$index}}"
-        type="text"
-        ng-model="pattern.value"
-        ng-keydown="handleKey($event, $index)">
+    <div class="patterns">
+
+      <pre>gulp.src(</pre><pre ng-show="patterns.length > 1">[</pre>
+
+      <div ng-repeat="pattern in patterns">
+        <pre>  "</pre>
+        <input
+          id="pattern-{{$index}}"
+          type="text"
+          ng-model="pattern.value"
+          ng-keydown="handleKey($event, $index)">
+        <pre>"</pre><pre ng-if="!$last">,</pre>
+      </div>
+
+      <pre ng-show="patterns.length > 1">]</pre><pre>)</pre>
     </div>
   </script>
 

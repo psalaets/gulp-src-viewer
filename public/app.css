@@ -1,3 +1,7 @@
 .selected {
   border: 1px solid green;
 }
+
+.patterns pre {
+  display: inline;
+}
