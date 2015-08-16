@@ -8,6 +8,12 @@ angular.module('gsv', [])
     $scope.patterns = patterns;
   };
 
+  clientMessaging.onGulpVersion(function(version) {
+    $scope.gulpVersion = version;
+    // https://github.com/gulpjs/gulp/blob/v3.8.10/docs/API.md
+    $scope.gulpDocsUrl = 'https://github.com/gulpjs/gulp/blob/v' + version + '/docs/API.md';
+  });
+
   clientMessaging.onAllFiles(function(files) {
     files.sort(byPath);
     $scope.files = files;
@@ -179,8 +185,14 @@ angular.module('gsv', [])
   };
 })
 .factory('clientMessaging', function($rootScope) {
-  var allFilesListener, selectedFilesListener;
+  var allFilesListener, selectedFilesListener, gulpVersionListener;
   var client = new Faye.Client('/faye');
+
+  client.subscribe('/client/gulp-version', function(version) {
+    if (gulpVersionListener) {
+      $rootScope.$apply(gulpVersionListener.bind(null, version));
+    }
+  });
 
   client.subscribe('/client/all-files', function(files) {
     if (allFilesListener) {
@@ -195,6 +207,9 @@ angular.module('gsv', [])
   });
 
   return {
+    onGulpVersion: function(listener) {
+      gulpVersionListener = listener;
+    },
     onAllFiles: function(listener) {
       allFilesListener = listener;
     },
