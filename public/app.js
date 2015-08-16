@@ -56,8 +56,8 @@ angular.module('gsv', [])
 
       $scope.handleKey = function(event, index) {
         var handler = {
-          '8': handleBackspaceKey,
-          '13': handleEnterKey
+          8: handleBackspaceKey,
+          13: handleEnterKey
         }[event.keyCode];
 
         handler && handler(index);
