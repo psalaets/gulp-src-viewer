@@ -6,6 +6,11 @@ angular.module('gsv')
       onPatternChange: '&'
     },
     controller: function($scope) {
+      $scope.ngModelOptions = {
+        // milliseconds
+        debounce: 200
+      };
+
       $scope.patterns = [newPattern()];
       focusInput(0);
 
