@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="gsv">
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" href="/app.css">
 </head>
 <body>
 
-<h1>it worked</h1>
+  <div ng-controller="MainCtrl">
 
+    <div ng-repeat="pattern in patterns">
+      <input type="text" ng-model="pattern.value">
+    </div>
+
+    <h1>Files</h1>
+    <ul>
+      <li ng-repeat="file in files">
+        <span ng-class="{selected: file.selected}">
+          {{file.path}}
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <script src="/faye/client.js"></script>
+  <script src="/angular/angular.min.js"></script>
+  <script src="/app.js"></script>
 </body>
 </html>
