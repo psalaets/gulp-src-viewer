@@ -1,14 +1,16 @@
 # gulp-src-viewer
 
-Tool for testing gulp.src() globs
+Tool for testing gulp.src() glob patterns
 
 ## What this does
 
-Launches a webpage where you can enter globs and it shows what files are returned by `gulp.src()`.
+Launches local server that creates a webpage where you can enter globs and it shows what files are returned by `gulp.src()`.
 
 ## Install
 
-`npm install gulp-src-viewer -D`
+```bash
+npm install gulp-src-viewer -D
+```
 
 ## Usage
 
