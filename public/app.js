@@ -57,10 +57,20 @@ angular.module('gsv', [])
       patterns: '='
     },
     controller: function($scope) {
-      $scope.$watch('patterns', updateCode, 'deep');
-
       var quote = "'";
       var indent = "  ";
+
+      $scope.singleQuote = function() {
+        quote = "'";
+        updateCode($scope.patterns);
+      };
+
+      $scope.doubleQuote = function() {
+        quote = '"';
+        updateCode($scope.patterns);
+      };
+
+      $scope.$watch('patterns', updateCode, 'deep');
 
       function updateCode(patterns) {
         if (!patterns) return;
