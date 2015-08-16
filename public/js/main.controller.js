@@ -13,10 +13,10 @@ angular.module('gsv')
     // https://github.com/gulpjs/gulp/blob/v3.8.10/docs/API.md
 
     var urlSegment = {
-      '3.4': '3.4',
-      '3.5': '3.5',
-      '3.7': '3.7',
-      '3.8': '3.8'
+      '3.4.0': '3.4',
+      '3.5.0': '3.5',
+      '3.7.0': '3.7',
+      '3.8.0': '3.8'
     }[version] || 'v' + version;
 
     $scope.gulpDocsUrl = 'https://github.com/gulpjs/gulp/blob/' + urlSegment + '/docs/API.md';
