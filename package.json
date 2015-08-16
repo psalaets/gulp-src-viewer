@@ -1,7 +1,7 @@
 {
   "name": "gulp-src-viewer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tool for testing gulp.src() globs",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/*-test.js"
@@ -15,7 +15,7 @@
     "src",
     "gulpfriendly"
   ],
-  "author": "",
+  "author": "Paul Salaets <psalaets@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/psalaets/gulp-src-viewer/issues"
