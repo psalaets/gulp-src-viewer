@@ -23,7 +23,8 @@
   "homepage": "https://github.com/psalaets/gulp-src-viewer#readme",
   "dependencies": {
     "express": "4.13.3",
-    "faye": "1.1.2"
+    "faye": "1.1.2",
+    "open": "0.0.5"
   },
   "devDependencies": {
     "gulp": "3.9.0",
