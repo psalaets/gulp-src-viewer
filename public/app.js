@@ -1,6 +1,6 @@
 angular.module('gsv', [])
 .controller('MainCtrl', function($scope, clientMessaging) {
-
+  $scope.selectionBreakdown = generateSelectionBreakdown([]);
   $scope.files = [];
 
   $scope.sendPatterns = function(patterns) {
@@ -14,9 +14,24 @@ angular.module('gsv', [])
 
   clientMessaging.onSelectedFiles(function(selectedFiles) {
     markSelected($scope.files, selectedFiles);
+    $scope.selectionBreakdown = generateSelectionBreakdown(selectedFiles);
   });
 
   clientMessaging.ready();
+
+  function generateSelectionBreakdown(selectedFiles) {
+    return selectedFiles.reduce(function(counts, selected) {
+      counts.total += 1;
+
+      if (selected.type == 'file') {
+        counts.files += 1;
+      } else if (selected.type == 'directory') {
+        counts.directories += 1;
+      }
+
+      return counts;
+    }, {files: 0, directories: 0, total: 0});
+  }
 
   function markSelected(files, selectedFiles) {
     // make "is selected?" check easier
@@ -33,6 +48,16 @@ angular.module('gsv', [])
   function byPath(file1, file2) {
     return file1.path.localeCompare(file2.path);
   }
+})
+.directive('selectionBreakdown', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      breakdown: '='
+    },
+    // template is embedded in index.html
+    templateUrl: 'selection-breakdown'
+  };
 })
 .directive('patternInputs', function() {
   return {
@@ -109,7 +134,7 @@ angular.module('gsv', [])
       }
     },
     // template is embedded in index.html
-    templateUrl: 'pattern-inputs-script-tag'
+    templateUrl: 'pattern-inputs'
   };
 })
 .factory('clientMessaging', function($rootScope) {

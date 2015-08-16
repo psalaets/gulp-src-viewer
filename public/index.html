@@ -9,9 +9,14 @@
 
   <div ng-controller="MainCtrl">
 
+    <h1>Patterns</h1>
+
     <pattern-inputs on-pattern-change="sendPatterns(patterns)"></pattern-inputs>
 
     <h1>Files</h1>
+
+    <selection-breakdown breakdown="selectionBreakdown"></selection-breakdown>
+
     <ul>
       <li ng-repeat="file in files">
         <span ng-class="{selected: file.selected}">
@@ -21,9 +26,30 @@
     </ul>
   </div>
 
-  <script type="text/ng-template" id="pattern-inputs-script-tag">
+  <script type="text/ng-template" id="selection-breakdown">
+    <div ng-if="breakdown.total == 0">
+      Nothing selected
+    </div>
+    <div ng-if="breakdown.total > 0">
+      <ng-pluralize
+        count="breakdown.files"
+        when="{one: '1 file selected', other: '{} files selected'}">
+      </ng-pluralize>,
+      <ng-pluralize
+        count="breakdown.directories"
+        when="{one: '1 directory selected', other: '{} directories selected'}">
+      </ng-pluralize>
+      ({{breakdown.total}} total)
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="pattern-inputs">
     <div ng-repeat="pattern in patterns">
-      <input id="pattern-{{$index}}" type="text" ng-model="pattern.value" ng-keydown="handleKey($event, $index)">
+      <input
+        id="pattern-{{$index}}"
+        type="text"
+        ng-model="pattern.value"
+        ng-keydown="handleKey($event, $index)">
     </div>
   </script>
 
