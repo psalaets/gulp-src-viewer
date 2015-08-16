@@ -41,6 +41,16 @@ describe('gulp src wrapper', function () {
         done();
       });
     });
+
+    it('shows current working directory as dot', function (done) {
+      var pattern = '.';
+
+      wrapper.run(pattern, function(error, files) {
+        assert.equal(1, files.length);
+        assert(has(files, '.', 'directory'));
+        done();
+      });
+    });
   });
 });
 
