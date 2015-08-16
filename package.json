@@ -21,9 +21,7 @@
     "url": "https://github.com/psalaets/gulp-src-viewer/issues"
   },
   "homepage": "https://github.com/psalaets/gulp-src-viewer#readme",
-  "dependencies": {
-    "through2": "2.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "gulp": "3.9.0",
     "mocha": "2.2.5"
