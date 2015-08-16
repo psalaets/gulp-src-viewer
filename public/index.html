@@ -11,7 +11,11 @@
 
     <h1>Patterns</h1>
 
-    <pattern-inputs on-pattern-change="sendPatterns(patterns)"></pattern-inputs>
+    <pattern-inputs on-pattern-change="handlePatternChange(patterns)"></pattern-inputs>
+
+    <h1>Code</h1>
+
+    <code-box patterns="patterns"></code-box>
 
     <h1>Files</h1>
 
@@ -60,6 +64,10 @@
 
       <pre ng-show="patterns.length > 1">]</pre><pre>)</pre>
     </div>
+  </script>
+
+  <script type="text/ng-template" id="code-box">
+    <textarea rows="{{patterns.length + 5}}" cols="50">{{code}}</textarea>
   </script>
 
   <script src="/faye/client.js"></script>

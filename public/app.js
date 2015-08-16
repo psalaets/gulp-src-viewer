@@ -3,8 +3,9 @@ angular.module('gsv', [])
   $scope.selectionBreakdown = generateSelectionBreakdown([]);
   $scope.files = [];
 
-  $scope.sendPatterns = function(patterns) {
+  $scope.handlePatternChange = function(patterns) {
     clientMessaging.sendPatterns(patterns);
+    $scope.patterns = patterns;
   };
 
   clientMessaging.onAllFiles(function(files) {
@@ -48,6 +49,38 @@ angular.module('gsv', [])
   function byPath(file1, file2) {
     return file1.path.localeCompare(file2.path);
   }
+})
+.directive('codeBox', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      patterns: '='
+    },
+    controller: function($scope) {
+      $scope.$watch('patterns', updateCode, 'deep');
+
+      var quote = "'";
+      var indent = "  ";
+
+      function updateCode(patterns) {
+        if (!patterns) return;
+
+        var front = '\nvar patterns = [\n';
+        var middle = patterns.map(function(pattern, index) {
+          return indent + quote + pattern + quote + comma(index, patterns) + '\n';
+        }).join('');
+        var end = ']\n';
+
+        $scope.code = front + middle + end;
+      }
+
+      function comma(index, array) {
+        return index == array.length - 1 ? '' : ',';
+      }
+    },
+    // template is embedded in index.html
+    templateUrl: 'code-box'
+  };
 })
 .directive('selectionBreakdown', function() {
   return {
