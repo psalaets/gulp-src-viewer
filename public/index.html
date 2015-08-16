@@ -9,9 +9,7 @@
 
   <div ng-controller="MainCtrl">
 
-    <div ng-repeat="pattern in patterns">
-      <input type="text" ng-model="pattern.value">
-    </div>
+    <pattern-inputs on-pattern-change="sendPatterns(patterns)"></pattern-inputs>
 
     <h1>Files</h1>
     <ul>
@@ -22,6 +20,12 @@
       </li>
     </ul>
   </div>
+
+  <script type="text/ng-template" id="pattern-inputs-script-tag">
+    <div ng-repeat="pattern in patterns">
+      <input id="pattern-{{$index}}" type="text" ng-model="pattern.value" ng-keydown="handleKey($event, $index)">
+    </div>
+  </script>
 
   <script src="/faye/client.js"></script>
   <script src="/angular/angular.min.js"></script>
