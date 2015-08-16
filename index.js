@@ -16,3 +16,8 @@ serverMessaging.on('patterns', function(patterns) {
     serverMessaging.selectedFiles(files);
   });
 });
+
+var port = 3333;
+server.listen(port, function() {
+  console.log('Server listening on port ' + port);
+});
