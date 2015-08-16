@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## not-yet-published version
+
+### Changed
+
+- Pattern inputs are debounced
+
+### Fixed
+
+- Fix link to `gulp.src` docs for most versions of gulp, 3.4 and newer
+
 ## [1.1.0] - 2015-08-16
 
 ### Added
