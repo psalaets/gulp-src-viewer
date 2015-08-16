@@ -67,9 +67,9 @@ angular.module('gsv', [])
 
         var front = '\nvar patterns = [\n';
         var middle = patterns.map(function(pattern, index) {
-          return indent + quote + pattern + quote + comma(index, patterns) + '\n';
-        }).join('');
-        var end = ']\n';
+          return indent + quote + pattern + quote + comma(index, patterns);
+        }).join('\n');
+        var end = '\n]\n';
 
         $scope.code = front + middle + end;
       }
