@@ -13,7 +13,7 @@
       <h2>Globs</h2>
 
       <span ng-if="gulpVersion">
-        You are running gulp {{gulpVersion}} - <a href="{{gulpVersion | gulpDocsUrl}}">docs</a>
+        gulp version <a href="{{gulpVersion | gulpDocsUrl}}">{{gulpVersion}}</a>
       </span>
 
       <pattern-inputs on-pattern-change="handlePatternChange(patterns)"></pattern-inputs>
@@ -56,6 +56,9 @@
           ng-model="pattern.value"
           ng-model-options="ngModelOptions"
           ng-keydown="handleKey($event, $index)">
+        <i class="fa fa-arrow-up"   ng-click="moveUp($index)"></i>
+        <i class="fa fa-arrow-down" ng-click="moveDown($index)"></i>
+        <i class="fa fa-close"      ng-click="remove($index)"></i>
       </div>
     </div>
   </script>

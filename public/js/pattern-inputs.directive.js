@@ -24,7 +24,26 @@ angular.module('gsv')
         }
       }, 'deep');
 
-      $scope.handleKey = function(event, index) {
+      $scope.handleKey = handleKey;
+      $scope.moveUp = moveUp;
+      $scope.moveDown = moveDown;
+      $scope.remove = remove;
+
+      function moveUp(index) {
+        movePattern(index, index - 1);
+      }
+
+      function moveDown(index) {
+        movePattern(index, index + 1);
+      }
+
+      function remove(index) {
+        if (patternCount() > 1) {
+          removePattern(index);
+        }
+      }
+
+      function handleKey(event, index) {
         var handler = {
           8: handleBackspaceKey,
           13: handleEnterKey
@@ -39,8 +58,8 @@ angular.module('gsv')
       }
 
       function handleBackspaceKey(index) {
-        if (patternCount() > 1 && hasEmptyPatternAt(index)) {
-          removePattern(index);
+        if (hasEmptyPatternAt(index)) {
+          remove(index);
           focusInput(index - 1);
         }
       }
@@ -74,8 +93,25 @@ angular.module('gsv')
         return $scope.patterns.length;
       }
 
+      function movePattern(fromIndex, toIndex) {
+        if (isValidIndex(toIndex)) {
+          var mover = removePattern(fromIndex);
+          insertPattern(toIndex, mover);
+        }
+      }
+
+      // assumes index is valid
+      function insertPattern(index, pattern) {
+        $scope.patterns.splice(index, 0, pattern);
+      }
+
+      // assumes index is valid, returns removed pattern
       function removePattern(index) {
-        $scope.patterns.splice(index, 1);
+        return $scope.patterns.splice(index, 1)[0];
+      }
+
+      function isValidIndex(index) {
+        return index >= 0 && index < patternCount();
       }
     },
     // template is embedded in index.html
