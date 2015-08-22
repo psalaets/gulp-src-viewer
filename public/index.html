@@ -41,10 +41,7 @@
   </div>
 
   <script type="text/ng-template" id="selection-breakdown">
-    <div ng-if="breakdown.total == 0">
-      Nothing selected
-    </div>
-    <div ng-if="breakdown.total > 0">
+    <div>
       <i class="fa fa-file-o"></i> {{breakdown.files}}<br>
       <i class="fa fa-folder-open-o"></i> {{breakdown.directories}}
     </div>
