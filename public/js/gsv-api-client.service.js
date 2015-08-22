@@ -16,9 +16,6 @@ angular.module('gsv')
       globs = [globs];
     }
 
-    // default to all files
-    globs = globs || ['**', '!node_modules/**/*'];
-
     return $http.post('/files', globs).then(function(response) {
       return response.data;
     });

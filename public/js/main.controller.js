@@ -35,7 +35,9 @@ angular.module('gsv')
   function allFiles() {
     startLoadingFiles();
 
-    return gsvApiClient.files().then(function(files) {
+    var patterns = ['**', '!node_modules/**/*'];
+
+    return gsvApiClient.files(patterns).then(function(files) {
       files.sort(byPath);
       $scope.files = files;
     }).finally(doneLoadingFiles);
