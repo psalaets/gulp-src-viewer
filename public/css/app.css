@@ -1,5 +1,13 @@
-.selected {
-  border: 1px solid green;
+.file {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  padding: 0.1em 0.2em;
+
+  border-radius: 5px;
+}
+
+.file.selected {
+  background: #BFEE90;
 }
 
 .main {

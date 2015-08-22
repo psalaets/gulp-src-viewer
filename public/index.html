@@ -23,9 +23,9 @@
 
       <ul>
         <li ng-repeat="file in files">
-          <span ng-class="{selected: file.selected}">
+          <div class="file" ng-class="{selected: file.selected}">
             {{file.path}}
-          </span>
+          </div>
         </li>
       </ul>
     </section>
