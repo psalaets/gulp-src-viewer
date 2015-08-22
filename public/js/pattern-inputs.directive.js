@@ -16,6 +16,7 @@ angular.module('gsv')
       $scope.moveUp = moveUp;
       $scope.moveDown = moveDown;
       $scope.remove = remove;
+      $scope.add = addPatternToBack;
 
       $scope.$watch('patterns', patternsChanged, 'deep');
 
@@ -29,6 +30,11 @@ angular.module('gsv')
 
           $scope.onPatternChange({patterns: patterns});
         }
+      }
+
+      function addPatternToBack() {
+        addPattern(patternCount() - 1);
+        focusInput(patternCount() - 1);
       }
 
       function moveUp(index) {
