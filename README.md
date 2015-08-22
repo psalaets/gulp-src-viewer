@@ -4,7 +4,7 @@ Tool for testing gulp.src() glob patterns
 
 ## What this does
 
-Launches local server that creates a webpage where you can enter globs and it shows what files are returned by `gulp.src()`.
+Launches locally-served page that shows what files are returned by `gulp.src()` based on globs you enter.
 
 ## Install
 
@@ -28,10 +28,10 @@ gulp.task('gsv', function() {
 then run
 
 ```bash
-$ gulp gsv
+gulp gsv
 ```
 
-and a browser tab will open a page for testing globs (or go to http://localhost:3333).
+and a webpage for testing globs will open (or go to http://localhost:3333).
 
 ## License
 
