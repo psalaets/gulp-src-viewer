@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Pattern inputs are debounced
+- Dependency on `faye` removed. Using `express` for everything now.
 
 ### Fixed
 
