@@ -7,31 +7,34 @@
 </head>
 <body>
 
-  <div ng-controller="MainCtrl">
+  <div class="main" ng-controller="MainCtrl">
+    <section class="column">
+      <h2>Patterns</h2>
 
-    <h1>Gulp Version</h1>
+      You are running gulp {{gulpVersion}} - <a href="{{gulpDocsUrl}}">docs</a>
 
-    {{gulpVersion}} - <a href="{{gulpDocsUrl}}">gulp.src docs</a>
+      <pattern-inputs on-pattern-change="handlePatternChange(patterns)"></pattern-inputs>
+    </section>
 
-    <h1>Patterns</h1>
+    <section class="column">
+      <h2>Files</h2>
 
-    <pattern-inputs on-pattern-change="handlePatternChange(patterns)"></pattern-inputs>
+      <selection-breakdown breakdown="selectionBreakdown"></selection-breakdown>
 
-    <h1>Code</h1>
+      <ul>
+        <li ng-repeat="file in files">
+          <span ng-class="{selected: file.selected}">
+            {{file.path}}
+          </span>
+        </li>
+      </ul>
+    </section>
 
-    <code-box patterns="patterns"></code-box>
+    <section class="column">
+      <h2>Code</h2>
 
-    <h1>Files</h1>
-
-    <selection-breakdown breakdown="selectionBreakdown"></selection-breakdown>
-
-    <ul>
-      <li ng-repeat="file in files">
-        <span ng-class="{selected: file.selected}">
-          {{file.path}}
-        </span>
-      </li>
-    </ul>
+      <code-box patterns="patterns"></code-box>
+    </section>
   </div>
 
   <script type="text/ng-template" id="selection-breakdown">
@@ -70,7 +73,7 @@
       <button ng-click="doubleQuote()">Double Quotes</button>
     </div>
 
-    <textarea rows="{{patterns.length + 4}}" cols="50">{{code}}</textarea>
+    <pre>{{code}}</pre>
   </script>
 
   <script src="/angular/angular.min.js"></script>
