@@ -25,6 +25,7 @@
     "angular": "1.4.4",
     "body-parser": "1.13.3",
     "express": "4.13.3",
+    "font-awesome": "4.4.0",
     "open": "0.0.5"
   },
   "devDependencies": {

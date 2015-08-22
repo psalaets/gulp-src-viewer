@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -44,14 +45,8 @@
       Nothing selected
     </div>
     <div ng-if="breakdown.total > 0">
-      <ng-pluralize
-        count="breakdown.files"
-        when="{one: '1 file', other: '{} files'}">
-      </ng-pluralize>,
-      <ng-pluralize
-        count="breakdown.directories"
-        when="{one: '1 directory', other: '{} directories'}">
-      </ng-pluralize>
+      <i class="fa fa-file-o"></i> {{breakdown.files}}<br>
+      <i class="fa fa-folder-open-o"></i> {{breakdown.directories}}
     </div>
   </script>
 
