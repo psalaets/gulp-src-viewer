@@ -22,7 +22,7 @@ angular.module('gsv')
       function updateCode(patterns) {
         if (!patterns) return;
 
-        var front = '\nvar patterns = [\n';
+        var front = '\nvar globs = [\n';
         var middle = patterns.map(function(pattern, index) {
           return indent + quote + pattern + quote + comma(index, patterns);
         }).join('\n');
