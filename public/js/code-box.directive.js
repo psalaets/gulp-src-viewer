@@ -24,15 +24,11 @@ angular.module('gsv')
 
         var front = '\nvar globs = [\n';
         var middle = patterns.map(function(pattern, index) {
-          return indent + quote + pattern + quote + comma(index, patterns);
-        }).join('\n');
+          return indent + quote + pattern + quote;
+        }).join(',\n');
         var end = '\n]\n';
 
         $scope.code = front + middle + end;
-      }
-
-      function comma(index, array) {
-        return index == array.length - 1 ? '' : ',';
       }
     },
     // template is embedded in index.html
