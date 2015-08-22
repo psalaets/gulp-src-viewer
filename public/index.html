@@ -56,9 +56,12 @@
           ng-model="pattern.value"
           ng-model-options="ngModelOptions"
           ng-keydown="handleKey($event, $index)">
-        <i class="fa fa-arrow-up"   ng-click="moveUp($index)"></i>
-        <i class="fa fa-arrow-down" ng-click="moveDown($index)"></i>
-        <i class="fa fa-close"      ng-click="remove($index)"></i>
+
+        <span ng-if="patterns.length > 1">
+          <i class="fa fa-arrow-up"   ng-click="moveUp($index)"></i>
+          <i class="fa fa-arrow-down" ng-click="moveDown($index)"></i>
+          <i class="fa fa-close"      ng-click="remove($index)"></i>
+        </span>
       </div>
     </div>
   </script>

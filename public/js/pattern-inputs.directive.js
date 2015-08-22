@@ -12,9 +12,16 @@ angular.module('gsv')
       };
 
       $scope.patterns = [newPattern()];
+      $scope.handleKey = handleKey;
+      $scope.moveUp = moveUp;
+      $scope.moveDown = moveDown;
+      $scope.remove = remove;
+
+      $scope.$watch('patterns', patternsChanged, 'deep');
+
       focusInput(0);
 
-      $scope.$watch('patterns', function(newValue, oldValue) {
+      function patternsChanged(newValue, oldValue) {
         if (newValue !== oldValue) {
           var patterns = newValue.map(function(patternObject) {
             return patternObject.value;
@@ -22,12 +29,7 @@ angular.module('gsv')
 
           $scope.onPatternChange({patterns: patterns});
         }
-      }, 'deep');
-
-      $scope.handleKey = handleKey;
-      $scope.moveUp = moveUp;
-      $scope.moveDown = moveDown;
-      $scope.remove = remove;
+      }
 
       function moveUp(index) {
         movePattern(index, index - 1);
