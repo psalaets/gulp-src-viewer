@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## not-yet-published version
+## [1.2.0] - 2015-08-22
 
 ### Added
 
