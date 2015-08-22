@@ -3,17 +3,27 @@ angular.module('gsv')
   $scope.selectionBreakdown = generateSelectionBreakdown([]);
   $scope.files = [];
   $scope.handlePatternChange = selectFiles;
+  $scope.loadingFiles = false;
 
   gulpVersion();
   allFiles();
 
+  function startLoadingFiles() {
+    $scope.loadingFiles = true;
+  }
+
+  function doneLoadingFiles() {
+    $scope.loadingFiles = false;
+  }
+
   function selectFiles(patterns) {
+    startLoadingFiles();
     $scope.patterns = patterns;
 
     return gsvApiClient.files(patterns).then(function(selectedFiles) {
       markSelected($scope.files, selectedFiles);
       $scope.selectionBreakdown = generateSelectionBreakdown(selectedFiles);
-    });
+    }).finally(doneLoadingFiles);
   }
 
   function gulpVersion() {
@@ -23,10 +33,12 @@ angular.module('gsv')
   }
 
   function allFiles() {
+    startLoadingFiles();
+
     return gsvApiClient.files().then(function(files) {
       files.sort(byPath);
       $scope.files = files;
-    });
+    }).finally(doneLoadingFiles);
   }
 
   function generateSelectionBreakdown(selectedFiles) {
