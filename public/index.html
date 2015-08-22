@@ -11,7 +11,9 @@
     <section class="column">
       <h2>Globs</h2>
 
-      You are running gulp {{gulpVersion}} - <a href="{{gulpDocsUrl}}">docs</a>
+      <span ng-if="gulpVersion">
+        You are running gulp {{gulpVersion}} - <a href="{{gulpVersion | gulpDocsUrl}}">docs</a>
+      </span>
 
       <pattern-inputs on-pattern-change="handlePatternChange(patterns)"></pattern-inputs>
     </section>
@@ -82,5 +84,6 @@
   <script src="/js/selection-breakdown.directive.js"></script>
   <script src="/js/pattern-inputs.directive.js"></script>
   <script src="/js/gsv-api-client.service.js"></script>
+  <script src="/js/gulp-docs-url.filter.js"></script>
 </body>
 </html>
