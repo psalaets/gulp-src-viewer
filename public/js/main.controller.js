@@ -1,14 +1,13 @@
 angular.module('gsv')
-.controller('MainCtrl', function($scope, clientMessaging) {
+.controller('MainCtrl', function($scope, gsvApiClient) {
   $scope.selectionBreakdown = generateSelectionBreakdown([]);
   $scope.files = [];
 
   $scope.handlePatternChange = function(patterns) {
-    clientMessaging.sendPatterns(patterns);
-    $scope.patterns = patterns;
+    selectFiles(patterns);
   };
 
-  clientMessaging.onGulpVersion(function(version) {
+  gsvApiClient.gulpVersion().then(function(version) {
     $scope.gulpVersion = version;
     // https://github.com/gulpjs/gulp/blob/v3.8.10/docs/API.md
 
@@ -22,17 +21,23 @@ angular.module('gsv')
     $scope.gulpDocsUrl = 'https://github.com/gulpjs/gulp/blob/' + urlSegment + '/docs/API.md';
   });
 
-  clientMessaging.onAllFiles(function(files) {
-    files.sort(byPath);
-    $scope.files = files;
-  });
+  allFiles();
 
-  clientMessaging.onSelectedFiles(function(selectedFiles) {
-    markSelected($scope.files, selectedFiles);
-    $scope.selectionBreakdown = generateSelectionBreakdown(selectedFiles);
-  });
+  function selectFiles(patterns) {
+    $scope.patterns = patterns;
 
-  clientMessaging.ready();
+    return gsvApiClient.files(patterns).then(function(selectedFiles) {
+      markSelected($scope.files, selectedFiles);
+      $scope.selectionBreakdown = generateSelectionBreakdown(selectedFiles);
+    });
+  }
+
+  function allFiles() {
+    return gsvApiClient.files().then(function(files) {
+      files.sort(byPath);
+      $scope.files = files;
+    });
+  }
 
   function generateSelectionBreakdown(selectedFiles) {
     return selectedFiles.reduce(function(counts, selected) {
