@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2015-08-22
+
+### Added
+
+- title on webpage that is lauched
+
 ## [1.2.0] - 2015-08-22
 
 ### Added
