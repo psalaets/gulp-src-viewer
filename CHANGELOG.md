@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## not-yet-published version
 
+### Added
+
+- Buttons to add/move/remove globs
+
 ### Changed
 
 - Pattern inputs are debounced
