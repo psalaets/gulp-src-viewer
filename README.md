@@ -36,3 +36,28 @@ and a webpage for testing globs will open (or go to http://localhost:3333).
 ## License
 
 MIT
+
+## FAQ
+
+### `gulp-src-viewer` doesn't run
+
+`gulp-src-viewer` doesn't run and console shows
+
+```
+[gulp-src-viewer] Server listening on port 3333
+
+events.js:72
+        throw er; // Unhandled 'error' event
+              ^
+Error: EISDIR, read
+```
+
+These versions of gulp have some issues with symlinks:
+
+- 3.8.0
+- 3.9.0
+
+These are ok:
+
+- 3.6.0
+- 3.7.0
