@@ -57,7 +57,9 @@
           type="text"
           ng-model="pattern.value"
           ng-model-options="ngModelOptions"
-          ng-keydown="handleKey($event, $index)">
+          ng-keydown="handleKey($event, $index)"
+          ng-blur="globInputBlurred()"
+          ng-focus="globInputFocused()">
 
         <span ng-if="patterns.length > 1">
           <i class="fa fa-arrow-up"   ng-click="moveUp($index)"></i>
@@ -65,6 +67,11 @@
           <i class="fa fa-close"      ng-click="remove($index)"></i>
         </span>
       </div>
+
+      <aside ng-show="showProtips">
+        <kbd>enter</kbd> adds a new glob<br>
+        <kbd>backspace</kbd> in empty glob removes it
+      </aside>
     </div>
   </script>
 

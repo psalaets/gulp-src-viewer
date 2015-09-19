@@ -17,10 +17,20 @@ angular.module('gsv')
       $scope.moveDown = moveDown;
       $scope.remove = remove;
       $scope.add = addPatternToBack;
+      $scope.globInputFocused = globInputFocused;
+      $scope.globInputBlurred = globInputBlurred;
 
       $scope.$watch('patterns', patternsChanged, 'deep');
 
       focusInput(0);
+
+      function globInputFocused() {
+        $scope.showProtips = true;
+      }
+
+      function globInputBlurred() {
+        $scope.showProtips = false;
+      }
 
       function patternsChanged(newValue, oldValue) {
         if (newValue !== oldValue) {
