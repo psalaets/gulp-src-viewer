@@ -24,3 +24,7 @@
 
   background: #EEEEEE;
 }
+
+.patterns i {
+  cursor: pointer;
+}
