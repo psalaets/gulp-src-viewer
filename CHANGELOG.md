@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2015-09-19
+
+### Fixed
+
+- IE bug where two glob inputs are added when enter pressed
+
 ## [1.2.2] - 2015-08-29
 
 ### Fixed
