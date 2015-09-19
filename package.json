@@ -1,6 +1,6 @@
 {
   "name": "gulp-src-viewer",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Tool for testing gulp.src() glob patterns",
   "main": "index.js",
   "scripts": {
