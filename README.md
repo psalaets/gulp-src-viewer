@@ -39,9 +39,9 @@ MIT
 
 ## FAQ
 
-### `gulp-src-viewer` doesn't run
+### Webpage doesn't launch
 
-`gulp-src-viewer` doesn't run and console shows
+The `gulp-src-viewer` server crashes and console shows
 
 ```
 [gulp-src-viewer] Server listening on port 3333
@@ -61,3 +61,5 @@ These are ok:
 
 - 3.6.0
 - 3.7.0
+
+`¯\_(ツ)_/¯`
